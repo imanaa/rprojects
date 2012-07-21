@@ -87,12 +87,12 @@ module Rprojects
       "Application"
     end
 
-    # Default program options: loof for a file named as the running script with .rc.yaml
+    # Default program options: look for a file named as the running script with .rc.yaml
     # extension in the user's home directory
     def default_options()
       options = {
-        :verbose => nil,
-        :logfile => "#{File.basename($0, ".*")}.log"
+        :verbose => 0,      # Logger::DEBUG
+        :logfile => STDERR
       }
       config_file = File.join(ENV['HOME'],"#{File.basename($0, ".*")}.rc.yaml")
       if File.exists? config_file then
@@ -119,7 +119,7 @@ module Rprojects
       @optparse.define_head "This is a Ruby application"
       @optparse.set_summary_indent("   ")
       @optparse.separator ""
-      @optparse.on( '-v', '--verbose=<SEVERITY>','--[no-]verbose', Logger::Severity, '0:FATAL/1:ERROR/2:WARN/3:INFO/4:DEBUG/NONE' ) do |severity|
+      @optparse.on( '-v', '--verbose=<SEVERITY>','--[no-]verbose', Logger::Severity, '0:DEBUG/1:INFO/2:WARN/3:ERROR/4:FATAL/NONE' ) do |severity|
         @options[:verbose] = (severity==false)? nil : severity
       end
       @optparse.on( '-l', '--logfile=<logfile>', String, 'The name of the log file (verbose!=NONE)' ) do |logfile|
