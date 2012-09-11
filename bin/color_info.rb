@@ -27,5 +27,6 @@ end
 puts "Color is RGB(#{color.red},#{color.green},#{color.blue}) = \##{color.to_hex}"
 puts "Color name in :"
 Color.available_name_sources.each_key { |source|
-  puts "\t#{source} : #{color.name(source)} -- #{color.nearest_color(source).to_hex}"
+  nearest_color = color.nearest_color(source)
+  puts "\t#{source} : #{color.name(source)} -- #{nearest_color.to_hex} = (#{nearest_color.red},#{nearest_color.green},#{nearest_color.blue})"
 }
