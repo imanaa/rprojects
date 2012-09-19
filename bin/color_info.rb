@@ -12,7 +12,7 @@
 # Version : 1.0
 ###############################################################################
 
-require "rprojects"
+require_relative "../lib/rprojects"
 
 include Rprojects
 
