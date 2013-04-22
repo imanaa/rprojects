@@ -3,6 +3,7 @@ require "bundler/gem_tasks"
 require 'rdoc/task'
 require 'rake/testtask'
 require 'rake/clean'
+require 'rake/notes/rake_task'
 
 task :default => [:test]
 
